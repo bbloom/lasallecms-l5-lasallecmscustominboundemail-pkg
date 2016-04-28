@@ -46,17 +46,17 @@ use Illuminate\Support\Facades\DB;
 class FrontendCustomerCareDashboardController extends FrontendBaseController
 {
     /**
-     * @var Lasallecrm\Lasallecrmemail\Repositories\Email_attachmentRepository
+     * @var Lasallecms\Lasallecmsemail\Repositories\Email_attachmentRepository
      */
-    protected $eEmail_attachmentRepository;
+    protected $email_attachmentRepository;
 
 
     /**
      * FrontendCustomerCareDashboardController constructor.
      *
-     * @param Email_attachmentRepository $eEmail_attachmentRepository
+     * @param Email_attachmentRepository $email_attachmentRepository
      */
-    public function __construct(Email_attachmentRepository $eEmail_attachmentRepository) {
+    public function __construct(Email_attachmentRepository $email_attachmentRepository) {
         // execute parent's construct method first in order to run the middleware
         parent::__construct();
 
@@ -64,7 +64,7 @@ class FrontendCustomerCareDashboardController extends FrontendBaseController
         $this->middleware('auth');
 
         // inject
-        $this->eEmail_attachmentRepository = $eEmail_attachmentRepository;
+        $this->email_attachmentRepository = $email_attachmentRepository;
     }
 
 
@@ -76,7 +76,7 @@ class FrontendCustomerCareDashboardController extends FrontendBaseController
     public function displayAllAlternatesortstring1Links() {
 
         // Get all the order numbers for a given user
-        $alternateSortString1s = $this->eEmail_attachmentRepository(Auth::user()->id);
+        $alternateSortString1s = $this->email_attachmentRepository->getAlternatesortstring1ByUserId(Auth::user()->id);
 
         return view('lasallecmscustominboundemail::frontend/display_attachments_list_of_alternate_sort1', [
             'alternateSortString1s' => $alternateSortString1s,
@@ -93,7 +93,7 @@ class FrontendCustomerCareDashboardController extends FrontendBaseController
     public function displaySingleAlternatesortstring1($alternatesortstring1) {
 
         // Get all the order numbers for a given user
-        $attachments = $this->getEmailAttachmentsByAlternatesortstring1($alternatesortstring1);
+        $attachments = $this->email_attachmentRepository->getEmailAttachmentsByAlternatesortstring1($alternatesortstring1);
 
         return view('lasallecmscustominboundemail::frontend/display_attachments_for_one_alternate_sort1', [
             'attachments'            => $attachments,
