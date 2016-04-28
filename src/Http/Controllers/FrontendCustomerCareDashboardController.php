@@ -100,7 +100,7 @@ class FrontendCustomerCareDashboardController extends FrontendBaseController
             'url'                    => config('app.url'),
             'username'               => Auth::user()->name,
             'alternatesortstring1'   => $alternatesortstring1,
-            'attachment_path'        => config('lasallecrmemail.attachment_path'),
+            'attachment_path'        => config('lasallecmsemail.attachment_path'),
         ]);
     }
 }
