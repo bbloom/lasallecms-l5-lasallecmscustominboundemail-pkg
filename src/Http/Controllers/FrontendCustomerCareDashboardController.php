@@ -33,7 +33,7 @@ namespace Lasallecms\Lasallecmscustominboundemail\Http\Controllers;
 
 // LaSalle Software
 use Lasallecms\Lasallecmsfrontend\Http\Controllers\FrontendBaseController;
-use Lasallecrm\Lasallecrmemail\Repositories\Email_attachmentRepository;
+use Lasallecms\Lasallecmsemail\Repositories\Email_attachmentRepository;
 
 // Laravel facades
 use Illuminate\Support\Facades\Auth;

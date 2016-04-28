@@ -32,8 +32,8 @@ namespace Lasallecms\Lasallecmscustominboundemail\Http\Controllers;
 
 
 // LaSalle Software
-use Lasallecrm\Lasallecrmemail\Processing\BaseInboundProcessing;
-use Lasallecrm\Lasallecrmemail\Validation\Validation;
+use Lasallecms\Lasallecmsemail\Processing\BaseInboundProcessing;
+use Lasallecms\Lasallecmsemail\Validation\Validation;
 use Lasallecms\Lasallecmscustominboundemail\Processing\CustomInboundProcessing;
 use Lasallecms\Lasallecmsmailgun\Processing\MapMailgunPostVariables;
 use Lasallecms\Lasallecmsmailgun\Processing\Validation as MailgunValidation;
