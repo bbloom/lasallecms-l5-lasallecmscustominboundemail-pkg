@@ -133,7 +133,7 @@ class CustomInboundEmailController extends Controller
     protected $mailgunValidation;
 
     /**
-     * @var Lasallecrm\Lasallecrmemail\Processing\BaseInboundProcessing
+     * @var Lasallecms\Lasallecmsemail\Processing\BaseInboundProcessing
      */
     protected $baseInboundProcessing;
 
@@ -150,7 +150,7 @@ class CustomInboundEmailController extends Controller
      * @param Lasallecms\Lasallecmsmailgun\Processing\MapMailgunPostVariables            $mapMailgunPostVariables
      * @param Lasallecms\Lasallecmsmailgun\Processing\Validation                         $mailgunValidation
      * @param Lasallecrm\Lasallecrmemail\Validation\Validation                           $validation
-     * @param Lasallecrm\Lasallecrmemail\Processing\BaseInboundProcessing                $baseInboundProcessing
+     * @param Lasallecms\Lasallecmsemail\Processing\BaseInboundProcessing                $baseInboundProcessing
      * @param Lasallecms\Lasallecmscustominboundemail\Processing\CustomInboundProcessing $customInboundProcessing
      */
     public function __construct(
@@ -159,7 +159,7 @@ class CustomInboundEmailController extends Controller
         MailgunValidation        $mailgunValidation,
         Validation               $validation,
         BaseInboundProcessing    $baseInboundProcessing,
-        CustomInboundProcessing $customInboundProcessing
+        CustomInboundProcessing  $customInboundProcessing
     ) {
         $this->request                 = $request;
         $this->mapMailgunPostVariables = $mapMailgunPostVariables;
