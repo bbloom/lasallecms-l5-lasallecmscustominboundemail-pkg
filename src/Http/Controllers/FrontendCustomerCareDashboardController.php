@@ -41,7 +41,7 @@ use Illuminate\Support\Facades\DB;
 
 /**
  * Class FrontendCustomerCareDashboardController
- * @package Lasallecrm\Lasallecrmemail\Http\Controllers
+ * @package Lasallecms\Lasallecmsemail\Http\Controllers
  */
 class FrontendCustomerCareDashboardController extends FrontendBaseController
 {
