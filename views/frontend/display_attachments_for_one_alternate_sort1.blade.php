@@ -31,11 +31,9 @@
 
         @if ($attachment->email_messages_id != $current_email_messages_id)
             <br /><br />
-            {{{ $attachment->comments }}}
+            <hr style="color: #3a3a3a;" />
             <br /><br />
         @endif
-
-        <?php $current_email_messages_id = $attachment->email_messages_id; ?>
 
         <img
             src="{{{ $url }}}/{{{ $attachment_path }}}/{{{ $attachment->attachment_filename }}}"
@@ -43,6 +41,14 @@
             height="auto"
         />
         <br /><br />
+
+        @if ($attachment->email_messages_id != $current_email_messages_id)
+            <br /><br />
+            {{{ $attachment->comments }}}
+            <br /><br />
+        @endif
+
+        <?php $current_email_messages_id = $attachment->email_messages_id; ?>
     @endforeach
 
 </div><!-- /.container -->
