@@ -257,14 +257,6 @@ class CustomOrderNumber extends BaseModel
             'index_skip'            => false,
             'index_align'           => 'center',
         ],
-        [
-            'name'         => 'enabled',
-            'type'         => 'boolean',
-            'info'         => false,
-            'index_skip'   => false,
-            'index_align'  => 'center',
-            'persist_wash' => 'enabled',
-        ],
     ];
 
 
