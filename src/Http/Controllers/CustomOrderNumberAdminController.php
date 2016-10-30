@@ -69,4 +69,28 @@ class CustomOrderNumberAdminController extends AdminFormBaseController
         // Inject the relevant model into the repository
         $this->repository->injectModelIntoRepository($this->model->model_namespace."\\".$this->model->model_class);
     }
+
+    /**
+     * Form to create a new user
+     * GET /users/create
+     *
+     * @return Response
+     */
+    public function create() {
+
+        $field = [
+            'name'                => 'groups',
+            'related_table_name'  => 'groups',
+            'related_model_class' => 'Group',
+        ];
+
+        return view('lasallecmsadmincustominboundemail::admin/order_number/create',[
+            'repository'  => $this->repository,
+            'field'       => $field,
+            'pagetitle'   => 'Users',
+            'DatesHelper' => DatesHelper::class,
+            'Form'        => Form::class,
+            'HTMLHelper'  => HTMLHelper::class,
+        ]);
+    }
 }
