@@ -44,6 +44,9 @@ use Lasallecms\Lasallecmsapi\Repositories\BaseRepository;
 ///////////////////////////////////////////////////////////////////
 use Lasallecms\Lasallecmscustominboundemail\Models\CustomOrderNumber as Model;
 
+use Lasallecms\Helpers\Dates\DatesHelper;
+use Lasallecms\Helpers\HTML\HTMLHelper;
+
 // Laravel facades
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Config;
