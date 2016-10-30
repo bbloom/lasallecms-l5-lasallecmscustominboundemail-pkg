@@ -237,7 +237,7 @@ class CustomOrderNumber extends BaseModel
              */
             'name'                  => 'composite_title',
             'type'                  => 'composite_title',
-            'fields_to_concatenate' => ['id', 'order_number', 'user_id'],
+            'fields_to_concatenate' => ['order_number', 'user_id'],
             'index_skip'            => true,
         ],
         [
