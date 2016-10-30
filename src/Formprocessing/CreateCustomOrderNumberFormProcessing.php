@@ -101,7 +101,6 @@ class CreateCustomOrderNumberFormProcessing extends BaseFormProcessing
      * Inject the model
      *
      * @param Lasallecms\Lasallecmsapi\Repositories\BaseRepository
-     * @param Lasallecms\Lasallecmsapi\FormProcessing\FeaturedImageProcessing
      */
     public function __construct(BaseRepository $repository)
     {
