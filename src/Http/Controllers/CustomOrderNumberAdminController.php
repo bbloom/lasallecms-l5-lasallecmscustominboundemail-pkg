@@ -1,35 +1,34 @@
 <?php
-//CustomOrderNumberAdminController.php
 
 namespace Lasallecms\Lasallecmscustominboundemail\Http\Controllers;
 
-/**
- *
- * Custom Inbound Email Processing package for the LaSalle Content Management System, based on the Laravel 5 Framework
- * Copyright (C) 2015 - 2016  The South LaSalle Trading Corporation
- *
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see <http://www.gnu.org/licenses/>.
- *
- *
- * @package    Custom Inbound Email Processing package for the LaSalle Content Management System
- * @link       http://LaSalleCMS.com
- * @copyright  (c) 2015 - 2016, The South LaSalle Trading Corporation
- * @license    http://www.gnu.org/licenses/gpl-3.0.html
- * @author     The South LaSalle Trading Corporation
- * @email      info@southlasalle.com
- *
- */
+    /**
+     *
+     * Custom Inbound Email Processing package for the LaSalle Content Management System, based on the Laravel 5 Framework
+     * Copyright (C) 2015 - 2016  The South LaSalle Trading Corporation
+     *
+     * This program is free software: you can redistribute it and/or modify
+     * it under the terms of the GNU General Public License as published by
+     * the Free Software Foundation, either version 3 of the License, or
+     * (at your option) any later version.
+     *
+     * This program is distributed in the hope that it will be useful,
+     * but WITHOUT ANY WARRANTY; without even the implied warranty of
+     * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+     * GNU General Public License for more details.
+     *
+     * You should have received a copy of the GNU General Public License
+     * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+     *
+     *
+     * @package    Custom Inbound Email Processing package for the LaSalle Content Management System
+     * @link       http://LaSalleCMS.com
+     * @copyright  (c) 2015 - 2016, The South LaSalle Trading Corporation
+     * @license    http://www.gnu.org/licenses/gpl-3.0.html
+     * @author     The South LaSalle Trading Corporation
+     * @email      info@southlasalle.com
+     *
+     */
 
 
 // LaSalle Software
@@ -97,6 +96,7 @@ class CustomOrderNumberAdminController extends AdminFormBaseController
 
         return view('lasallecmscustominboundemail::admin/order_number/create',[
             'repository'  => $this->repository,
+            'user_id_field_list' => $this->model->field_list[3],
             'DatesHelper' => DatesHelper::class,
             'Form'        => Form::class,
             'HTMLHelper'  => HTMLHelper::class,
@@ -125,19 +125,22 @@ class CustomOrderNumberAdminController extends AdminFormBaseController
 
         // Lock the record
         $this->repository->populateLockFields($id);
-        $field = [
-            'name'                => 'groups',
-            'related_table_name'  => 'groups',
-            'related_model_class' => 'Group',
-        ];
-        return view('lasallecmsadmin::'.config('lasallecmsadmin.admin_template_name').'/users/create',[
-            'repository'  => $this->repository,
-            'field'       => $field,
-            'pagetitle'   => 'Order Numbers',
-            'DatesHelper' => DatesHelper::class,
-            'Form'        => Form::class,
-            'HTMLHelper'  => HTMLHelper::class,
-            'orderNumber' => $orderNumber,
+
+        return view('lasallecmscustominboundemail::admin/order_number/update',[
+            'repository'                     => $this->repository,
+            'user_id_field_list'             => $this->model->field_list[3],
+            'pagetitle'                      => 'Order Numbers',
+            'table_name'                     => $this->model->table,
+            'model_class'                    => $this->model->model_class,
+            'resource_route_name'            => $this->model->resource_route_name,
+            'field_list'                     => $this->getFieldList(),
+            'namespace_formprocessor'        => $this->model->namespace_formprocessor,
+            'classname_formprocessor_update' => $this->model->classname_formprocessor_update,
+            'carbon'                         => Carbon::class,
+            'DatesHelper'                    => DatesHelper::class,
+            'Form'                           => Form::class,
+            'HTMLHelper'                     => HTMLHelper::class,
+            'orderNumber'                    => $orderNumber,
         ]);
     }
 }
