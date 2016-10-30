@@ -143,4 +143,23 @@ class CustomOrderNumberAdminController extends AdminFormBaseController
             'orderNumber'                    => $orderNumber,
         ]);
     }
+
+
+    /**
+     * Store a newly created resource in storage
+     * POST admin/{table}/create
+     *
+     * @param  Request   $request
+     * @return Response
+     */
+    public function store(Request $request) {
+        $request->merge( array( 'title' => $request->input('order_number') ) );
+
+
+        echo "title = ";
+        echo $request->input('title');
+        dd("nu?");
+
+        parent::store();
+    }
 }
