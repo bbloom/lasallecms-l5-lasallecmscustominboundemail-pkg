@@ -162,7 +162,6 @@ class CustomOrderNumber extends BaseModel
      * @var array
      */
     public $sanitationRulesForCreate = [
-        'order_number' => 'trim',
     ];
 
     /**
@@ -171,7 +170,6 @@ class CustomOrderNumber extends BaseModel
      * @var array
      */
     public $sanitationRulesForUpdate = [
-        'order_number' => 'trim',
     ];
 
 
