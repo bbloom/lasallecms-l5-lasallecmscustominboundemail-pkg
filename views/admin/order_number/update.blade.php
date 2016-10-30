@@ -10,7 +10,7 @@
             <div class="row">
                 <br /><br />
                 {!! $HTMLHelper::adminPageTitle('LaSalleCMS', 'Order Numbers', '') !!}
-                {!! $HTMLHelper::adminPageSubTitle($orderNumber, 'Order Numbers') !!}
+                {!! $HTMLHelper::adminPageSubTitle($orderNumber, 'Order Number', $orderNumber->id) !!}
             </div> <!-- row -->
 
             <br /><br />
