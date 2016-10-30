@@ -47,3 +47,10 @@ Route::group(array('prefix' => 'customercare'), function() {
         'FrontendCustomerCareDashboardController@displaySingleAlternatesortstring1');
 });
 
+Route::group(array('prefix' => 'admin'), function()
+{
+    Route::resource('customordernumber', 'CustomOrderNumberAdminController');
+    Route::post('customordernumber/confirmDeletion/{id}', 'CustomOrderNumberAdminController@confirmDeletion');
+    Route::post('customordernumber/confirmDeletionMultipleRows', 'CustomOrderNumberAdminController@confirmDeletionMultipleRows');
+    Route::post('customordernumber/destroyMultipleRecords', 'CustomOrderNumberAdminController@destroyMultipleRecords');
+});
