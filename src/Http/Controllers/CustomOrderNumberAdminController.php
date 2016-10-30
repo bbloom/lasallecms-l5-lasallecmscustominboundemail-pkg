@@ -44,6 +44,20 @@ use Lasallecms\Lasallecmsapi\Repositories\BaseRepository;
 ///////////////////////////////////////////////////////////////////
 use Lasallecms\Lasallecmscustominboundemail\Models\CustomOrderNumber as Model;
 
+// Laravel facades
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Config;
+use Illuminate\Support\Facades\Form;
+use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Redirect;
+
+// Laravel classes
+use Illuminate\Http\Request;
+// Third party classes
+use Carbon\Carbon;
+
 
 /*
  * Resource controller for administration of posts
