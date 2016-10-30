@@ -193,7 +193,7 @@ class CustomOrderNumber extends BaseModel
      * @var array
      */
     public $validationRulesForUpdate = [
-        'order_number' => 'required|integer',
+        'order_number' => 'required|integer|unique:custom_order_number,order_number',
         'user_id'      => 'required',
     ];
 
@@ -241,13 +241,6 @@ class CustomOrderNumber extends BaseModel
             'index_skip'            => true,
         ],
         [
-            'name'                  => 'title',
-            'type'                  => 'varchar',
-            'info'                  => 'For internal use only..',
-            'index_skip'            => true,
-            'persist_wash'          => 'title',
-        ],
-        [
             'name'        => 'id',
             'type'        => 'int',
             'info'        => false,
@@ -274,6 +267,13 @@ class CustomOrderNumber extends BaseModel
             'info'                  => 'Required!',
             'index_skip'            => false,
             'index_align'           => 'center',
+        ],
+        [
+            'name'                  => 'title',
+            'type'                  => 'varchar',
+            'info'                  => 'For internal use only..',
+            'index_skip'            => true,
+            'persist_wash'          => 'title',
         ],
     ];
 
