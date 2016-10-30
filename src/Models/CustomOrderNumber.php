@@ -181,7 +181,7 @@ class CustomOrderNumber extends BaseModel
      * @var array
      */
     public $validationRulesForCreate = [
-        'order_number' => 'required|trim|integer|unique',
+        'order_number' => 'required|integer|unique',
         'user_id'      => 'required',
     ];
 
@@ -191,7 +191,7 @@ class CustomOrderNumber extends BaseModel
      * @var array
      */
     public $validationRulesForUpdate = [
-        'order_number' => 'required|trim|integer|unique',
+        'order_number' => 'required|integer|unique',
         'user_id'      => 'required',
     ];
 
