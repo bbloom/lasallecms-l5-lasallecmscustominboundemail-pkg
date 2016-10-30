@@ -69,7 +69,7 @@
                             <td>
 
                                 @if ( isset($orderNumber) )
-                                    {!! Form::test('email', Input::old('order_number', isset($orderNumber) ? $orderNumber->order_number : '')) !!}&nbsp;&nbsp; <a href="#" data-toggle="popover" data-content="Order Number must be unique."><i class="fa fa-info-circle"></i></a>
+                                    {!! Form::text('order_number', Input::old('order_number', isset($orderNumber) ? $orderNumber->order_number : '')) !!}&nbsp;&nbsp; <a href="#" data-toggle="popover" data-content="The Order Number must be unique."><i class="fa fa-info-circle"></i></a>
                                     {{{ $errors->first('order_number', ':message') }}}
                                 @else
                                     <input type="text" name="order_number" value="{{{ $orderNumber->order_number }}}" disabled>
@@ -79,9 +79,7 @@
 
 
 
-                        @if ( isset($orderNumber) )
-                            <input type="hidden" name="title" value="{{{ $orderNumber->title }}}">
-                        @endif
+
 
                         </table>
 
