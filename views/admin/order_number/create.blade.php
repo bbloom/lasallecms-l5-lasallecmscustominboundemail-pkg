@@ -73,6 +73,17 @@
                         </tr>
 
 
+                        <td>
+                            <tr>{!! Form::label('user_id', 'LaSalle User: ') !!}</tr>
+                            <tr>
+                                {!! $repository->determineSelectFormFieldToRenderFromRelatedTable($field, 'create') !!}
+                                @include('formhandling::adminformhandling.bob1.popover')
+                            </tr>
+                        </td>
+
+
+
+
                         @if ( isset($orderNumber) )
                             <input type="hidden" name="title" value="{{{ $orderNumber->title }}}">
                         @endif

@@ -96,6 +96,7 @@ class CustomOrderNumberAdminController extends AdminFormBaseController
     public function create() {
 
         return view('lasallecmscustominboundemail::admin/order_number/create',[
+            'repository'  => $this->repository,
             'DatesHelper' => DatesHelper::class,
             'Form'        => Form::class,
             'HTMLHelper'  => HTMLHelper::class,
