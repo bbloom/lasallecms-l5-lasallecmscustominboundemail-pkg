@@ -87,10 +87,48 @@ class CustomOrderNumberAdminController extends AdminFormBaseController
         return view('lasallecmscustominboundemail::admin/order_number/create',[
             'repository'  => $this->repository,
             'field'       => $field,
-            'pagetitle'   => 'Users',
+            'pagetitle'   => 'Order Numbers',
             'DatesHelper' => DatesHelper::class,
             'Form'        => Form::class,
             'HTMLHelper'  => HTMLHelper::class,
+        ]);
+    }
+
+
+    /**
+     * Show the form for editing a specific user
+     * GET /users/{id}/edit
+     *
+     * @param  int  $id
+     * @return Response
+     */
+    public function edit($id) {
+        // Is this record locked?
+        if ($this->repository->isLocked($id))
+        {
+            $response = 'This order number is not available for editing, as someone else is currently editing this order number';
+            Session::flash('message', $response);
+            Session::flash('status_code', 400 );
+            return Redirect::route('admin.customordernumber.index');
+        }
+
+        $orderNumber = $this->repository->getFind($id);
+
+        // Lock the record
+        $this->repository->populateLockFields($id);
+        $field = [
+            'name'                => 'groups',
+            'related_table_name'  => 'groups',
+            'related_model_class' => 'Group',
+        ];
+        return view('lasallecmsadmin::'.config('lasallecmsadmin.admin_template_name').'/users/create',[
+            'repository'  => $this->repository,
+            'field'       => $field,
+            'pagetitle'   => 'Order Numbers',
+            'DatesHelper' => DatesHelper::class,
+            'Form'        => Form::class,
+            'HTMLHelper'  => HTMLHelper::class,
+            'orderNumber' => $orderNumber,
         ]);
     }
 }
