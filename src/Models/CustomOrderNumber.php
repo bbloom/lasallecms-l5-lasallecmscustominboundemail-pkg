@@ -241,6 +241,13 @@ class CustomOrderNumber extends BaseModel
             'index_skip'            => true,
         ],
         [
+            'name'                  => 'title',
+            'type'                  => 'varchar',
+            'info'                  => 'For internal use only..',
+            'index_skip'            => true,
+            'persist_wash'          => 'title',
+        ],
+        [
             'name'        => 'id',
             'type'        => 'int',
             'info'        => false,
