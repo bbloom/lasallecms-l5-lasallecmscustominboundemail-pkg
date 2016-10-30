@@ -26,12 +26,8 @@
 
                 <div class="col-md-3"></div>
 
+
                 <div class="col-md-6">
-
-
-
-                </div> <!-- col-md-6 -->
-                <div class="col-md-3"></div>
 
 
                     {{-- this is a combo create or edit form. Display the proper "form action"  --}}
@@ -69,10 +65,9 @@
                             <td>
 
                                 @if ( isset($orderNumber) )
-                                    {!! Form::text('order_number', Input::old('order_number', isset($orderNumber) ? $orderNumber->order_number : '')) !!}&nbsp;&nbsp; <a href="#" data-toggle="popover" data-content="The Order Number must be unique."><i class="fa fa-info-circle"></i></a>
-                                    {{{ $errors->first('order_number', ':message') }}}
-                                @else
                                     <input type="text" name="order_number" value="{{{ $orderNumber->order_number }}}" disabled>
+                                @else
+                                    <input type="text" name="order_number" value="">
                                 @endif
                             </td>
                         </tr>
@@ -84,6 +79,11 @@
 
 
                         </table>
+
+
+
+                </div> <!-- col-md-6 -->
+                <div class="col-md-3"></div>
 
             </div> <!-- row -->
 
