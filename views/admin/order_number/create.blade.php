@@ -78,7 +78,10 @@
                         </tr>
 
 
-                        <input type="hidden" name="title" value="{{{ $orderNumber->title }}}">
+
+                        @if ( isset($orderNumber) )
+                            <input type="hidden" name="title" value="{{{ $orderNumber->title }}}">
+                        @endif
 
                         </table>
 
