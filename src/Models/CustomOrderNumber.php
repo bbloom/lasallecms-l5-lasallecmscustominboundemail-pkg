@@ -130,7 +130,7 @@ class CustomOrderNumber extends BaseModel
      *
      * @var string
      */
-    public $namespace_formprocessor = 'Lasallecms\Lasallecmscustominboundemail\Categories';
+    public $namespace_formprocessor = 'Lasallecms\Lasallecmscustominboundemail\Formprocessing';
 
     /*
      * Class name of the CREATE Form Processor command
