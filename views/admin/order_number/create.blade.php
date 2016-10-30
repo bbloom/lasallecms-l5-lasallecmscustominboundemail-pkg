@@ -11,7 +11,7 @@
                 <br /><br />
                 {!! $HTMLHelper::adminPageTitle('LaSalleCMS', 'Order Numbers', '') !!}
 
-                @if ( isset($user) )
+                @if ( isset($orderNumber) )
                     {!! $HTMLHelper::adminPageSubTitle($orderNumber, 'Order Numbers') !!}
                 @else
                     {!! $HTMLHelper::adminPageSubTitle(null, 'Order Numbers') !!}
@@ -78,7 +78,9 @@
                         </tr>
 
 
-
+                        @if ( isset($orderNumber) )
+                            <input type="hidden" name="title" value="{{{ $orderNumber->title }}}">
+                        @endif
 
 
                         </table>
