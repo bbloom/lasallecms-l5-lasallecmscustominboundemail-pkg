@@ -84,7 +84,7 @@ class CustomOrderNumberAdminController extends AdminFormBaseController
             'related_model_class' => 'Group',
         ];
 
-        return view('lasallecmsadmincustominboundemail::admin/order_number/create',[
+        return view('lasallecmscustominboundemail::admin/order_number/create',[
             'repository'  => $this->repository,
             'field'       => $field,
             'pagetitle'   => 'Users',
