@@ -53,4 +53,7 @@ Route::group(array('prefix' => 'admin'), function()
     Route::post('customordernumber/confirmDeletion/{id}', 'CustomOrderNumberAdminController@confirmDeletion');
     Route::post('customordernumber/confirmDeletionMultipleRows', 'CustomOrderNumberAdminController@confirmDeletionMultipleRows');
     Route::post('customordernumber/destroyMultipleRecords', 'CustomOrderNumberAdminController@destroyMultipleRecords');
+
+    Route::get('bob', 'QuicktestController@bob');
+
 });

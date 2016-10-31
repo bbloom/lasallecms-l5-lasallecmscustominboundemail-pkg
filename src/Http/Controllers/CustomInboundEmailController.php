@@ -375,6 +375,23 @@ class CustomInboundEmailController extends Controller
             return response('The order number specified in the subject line does not exist in the web application.', $this->failResponseCode);
         }
 
+
+        // NEW  IS THE ORDER NUMBER ASSOCIATED WITH THE CUSTOMER's USER_ID?
+        // $parseSubject['orderNumber']
+        // $parseSubject['userID'])
+        //-------------------------------------------------------------
+        // Is the parsed order number associated with the customer's user_id?
+        //-------------------------------------------------------------
+        if (!$this->customInboundProcessing->isOrdernumberAssociatedWithCustomer($parseSubject['orderNumber'], $parseSubject['userID'])) {
+
+            // send an email back to sender that this email is rejected
+            $message = "RE: ".$this->baseInboundProcessing->modifiedSubjectLine($data['subject']).".  Your email has been rejected because the order number specified in the subject line is not associated with the customer in the web application.";
+            $this->baseInboundProcessing->sendEmailNotificationToSender($message, $data);
+
+            // send response to Mailgun
+            return response('The order number specified in the subject line is not associated with the customer in the web application.', $this->failResponseCode);
+        }
+
         //-------------------------------------------------------------
         // Merge the kosher parsed subject line with the $data array
         //-------------------------------------------------------------

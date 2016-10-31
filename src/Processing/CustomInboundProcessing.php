@@ -117,6 +117,29 @@ class CustomInboundProcessing
 
 
     /**
+     * Is the order number in the specially created "custom_order_number" db table?
+     *      *
+     * @param  string   $orderNumber     The order number parsed from the inbound email's subject line
+     * @param  int      $user_id         The customer's LaSalle user_id
+     * @return bool
+     */
+    public function isOrdernumberAssociatedWithCustomer($orderNumber, $user_id) {
+
+        $result =  DB::table('custom_order_number')
+            ->where('order_number', $orderNumber)
+            ->where('user_id', $user_id)
+            ->first()
+        ;
+
+        if (count($result) == 0) {
+            return false;
+        }
+
+        return true;
+    }
+
+
+    /**
      * Parse the comments in the inbound email's body.
      *
      * The body is structured to parse the comments.
