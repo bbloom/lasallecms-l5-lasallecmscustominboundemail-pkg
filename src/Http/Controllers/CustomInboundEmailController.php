@@ -416,6 +416,19 @@ class CustomInboundEmailController extends Controller
         //-------------------------------------------------------------
         $data = array_merge($data, $this->baseInboundProcessing->buildDataForDatabaseInsert($data));
 
+
+        //-------------------------------------------------------------
+        // There are two user ID's:
+        // data['userID']   = the the LaSalle Software user_id of the customer
+        // $data['user_id'] = the LaSalle Software user_id of the person sending the email
+        //
+        // For the upcoming email message insert, we need to use the customer's user_id
+        //-------------------------------------------------------------
+        $email_sender_user_id = $data['user_id'];
+        $data['user_id']      = $data['userID'];
+
+
+
         //-------------------------------------------------------------
         // INSERT into the "email_messages" db table
         // $savedOk is the new email_messages.id  *OR*  false
@@ -427,6 +440,13 @@ class CustomInboundEmailController extends Controller
             $this->baseInboundProcessing->sendEmailNotificationToSender($message, $data);
             return response('Invalid processing.', $this->failResponseCode);
         }
+
+
+        //-------------------------------------------------------------
+        // Revert $data['user_id'] to the email sender's user_id
+        //-------------------------------------------------------------
+        $data['user_id'] = $email_sender_user_id;
+
 
         //-------------------------------------------------------------
         // Process attachments
