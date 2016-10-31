@@ -228,31 +228,25 @@ class CustomOrderNumber extends BaseModel
      */
     public $field_list = [
         [
-            /*  "Composite Title" field. Database tables that are related to each other need a "Title" field.
-                 There is no natural field that can serve as the "Title" field. The "Composite Title" field
-                 concatenates other fields during create and updates automatically.
-                 * not for lookup tables
-                 * include  'index_skip' => true,  so existing code will exclude from index listing
-                 * MySQL field type "text" so not run out of space concatenating multiple varchar(255) fields
-             */
-            'name'                  => 'composite_title',
-            'type'                  => 'composite_title',
-            'fields_to_concatenate' => ['order_number'],
+            'name'                  => 'title',
+            'type'                  => 'varchar',
+            'info'                  => 'Is always the order number.',
             'index_skip'            => true,
+            'persist_wash'          => 'title',
         ],
         [
-            'name'        => 'id',
-            'type'        => 'int',
-            'info'        => false,
-            'index_skip'  => false,
-            'index_align' => 'center',
+            'name'                  => 'id',
+            'type'                  => 'int',
+            'info'                  => false,
+            'index_skip'            => false,
+            'index_align'           => 'center',
         ],
         [
-            'name'        => 'order_number',
-            'type'        => 'int',
-            'info'        => false,
-            'index_skip'  => false,
-            'index_align' => 'center',
+            'name'                  => 'order_number',
+            'type'                  => 'int',
+            'info'                  => false,
+            'index_skip'            => false,
+            'index_align'           => 'center',
         ],
         [
             'name'                  => 'user_id',
@@ -267,13 +261,6 @@ class CustomOrderNumber extends BaseModel
             'info'                  => 'Required!',
             'index_skip'            => false,
             'index_align'           => 'center',
-        ],
-        [
-            'name'                  => 'title',
-            'type'                  => 'varchar',
-            'info'                  => 'For internal use only..',
-            'index_skip'            => true,
-            'persist_wash'          => 'title',
         ],
     ];
 

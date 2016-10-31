@@ -48,6 +48,7 @@ use Lasallecms\Helpers\HTML\HTMLHelper;
 
 // Laravel facades
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Form;
 use Illuminate\Support\Facades\Input;
@@ -86,6 +87,10 @@ class CustomOrderNumberAdminController extends AdminFormBaseController
         $this->repository->injectModelIntoRepository($this->model->model_namespace."\\".$this->model->model_class);
 
 
+        // Boy, this is bad, updating the database, in the controller, every time this controller is hit.
+        // I can't use "parent::store(Request $request)" within "public function store(Request $request)",
+        // I'm not using a MySQL trigger, etc. So here it is, counting on the fact that so few people
+        // will call this controller so few times a month anyways
         $this->populateTitleWithOrdernumber();
     }
 
@@ -98,11 +103,11 @@ class CustomOrderNumberAdminController extends AdminFormBaseController
     public function create() {
 
         return view('lasallecmscustominboundemail::admin/order_number/create',[
-            'repository'  => $this->repository,
+            'repository'         => $this->repository,
             'user_id_field_list' => $this->model->field_list[3],
-            'DatesHelper' => DatesHelper::class,
-            'Form'        => Form::class,
-            'HTMLHelper'  => HTMLHelper::class,
+            'DatesHelper'        => DatesHelper::class,
+            'Form'               => Form::class,
+            'HTMLHelper'         => HTMLHelper::class,
         ]);
     }
 
@@ -157,6 +162,6 @@ class CustomOrderNumberAdminController extends AdminFormBaseController
      */
     public function populateTitleWithOrdernumber() {
 
-        DB::table('custom_order_number')->update(['title' => 'order_number']);
+        DB::table('custom_order_number')->update(['title' => DB::raw("`order_number`")]);
     }
 }
