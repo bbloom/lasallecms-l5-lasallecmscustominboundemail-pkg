@@ -84,6 +84,9 @@ class CustomOrderNumberAdminController extends AdminFormBaseController
 
         // Inject the relevant model into the repository
         $this->repository->injectModelIntoRepository($this->model->model_namespace."\\".$this->model->model_class);
+
+
+        $this->populateTitleWithOrdernumber();
     }
 
     /**
@@ -146,20 +149,14 @@ class CustomOrderNumberAdminController extends AdminFormBaseController
 
 
     /**
-     * Store a newly created resource in storage
-     * POST admin/{table}/create
      *
-     * @param  Request   $request
-     * @return Response
+     *
+     *
+     * @param
+     * @return void
      */
-    public function store(Request $request) {
-        $request->merge( array( 'title' => $request->input('order_number') ) );
+    public function populateTitleWithOrdernumber() {
 
-
-        echo "title = ";
-        echo $request->input('title');
-        dd("nu?");
-
-        parent::store();
+        DB::table('custom_order_number')->update(['title' => 'order_number']);
     }
 }
