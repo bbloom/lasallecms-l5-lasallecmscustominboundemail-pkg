@@ -459,7 +459,7 @@ class CustomInboundEmailController extends Controller
         // Create a Login Token so customer login bypasses login form
         // and Send Login Token email to the customer
         //-------------------------------------------------------------
-        $email['subject'] = "Updates are now available";
+        $email['subject'] = "Lely Tank Order Update";
         $email['body']    = "New pictures are now available for you on our website.";
         $this->baseInboundProcessing->manageTokenBasedLogin($data['userID'], $email);
 
