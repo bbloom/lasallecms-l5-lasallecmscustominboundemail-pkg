@@ -7,6 +7,8 @@
 
 Custom Inbound Email Processing  package made specifically for my LaSalle Content Management System. 
 
+[MUST READ CAVEAT ABOUT THIS PACKAGE at https://lasallesoftware.ca/caveat_about_lasalle_software_version_one.php](https://lasallesoftware.ca/caveat_about_lasalle_software_version_one.php)
+
 ## Security
 
 If you discover any security related issues, please email Bob Bloom at "info at southlasalle dot com" instead of using the issue tracker.
